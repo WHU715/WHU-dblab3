@@ -236,7 +236,7 @@ public class MapActivity extends AppCompatActivity {
         for(int i = 0; i < all_poi.size(); i += 1) {
             String poi = all_poi.get(i);
             OkHttpClient httpClient = new OkHttpClient();
-            String url = "https://restapi.amap.com/v3/geocode/geo?key=9ed1943afd63405b35e24257448ae9b1&address="+poi+"&city=武汉";
+            String url = "https://restapi.amap.com/v3/geocode/geo?key=【自己申请的高德开放平台key】&address="+poi+"&city=武汉";
             Request getRequest = new Request.Builder()
                     .url(url)
                     .get()
@@ -363,116 +363,5 @@ public class MapActivity extends AppCompatActivity {
         return result;
     }
 
-//    /***
-//     *经纬度集合
-//     */
-//    private List<LatLng> showListLat() throws ParseException, IOException, JSONException, InterruptedException {
-//        List<LatLng> points = new ArrayList<LatLng>();
-//
-//        //用trans.DirectSelect() 查询所有UNION好的数据（在union_track_class），存到 coords中
-////        String s="SELECT x AS long,y AS lat FROM union_track_class WHERE flag=1";
-////        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(s.getBytes());
-////        parse p = new parse(byteArrayInputStream);
-////        String[] aa = p.Run();
-//
-//        TupleList tpl = new TupleList();
-//        List<String> all_poi =new ArrayList<>();
-////        tpl = trans.DirectSelect(aa);
-////        for (int i = 0; i < tpl.tuplenum; i += 1) {
-////            all_poi.add((String) tpl.tuplelist.get(i).tuple[0]);
-////        }
-//
-//        for (int i = 0; i < 2; i += 1) {
-//            all_poi.add("武汉大学");
-//        }
-//        //all_poi是union出的结果的POI
-//        ServiceSettings.updatePrivacyShow(this, true, true);
-//        ServiceSettings.updatePrivacyAgree(this,true);
-//
-//        //根据POI名称调高德API查询经纬度信息
-//        for(int i = 0; i < all_poi.size(); i += 1) {
-//
-//            String poi = all_poi.get(i);
-//            OkHttpClient httpClient = new OkHttpClient();
-//
-//            String url = "https://restapi.amap.com/v3/geocode/geo?key=9ed1943afd63405b35e24257448ae9b1&address="+poi+"&city=武汉";
-//            Request getRequest = new Request.Builder()
-//                    .url(url)
-//                    .get()
-//                    .build();
-//
-//            Call call = httpClient.newCall(getRequest);
-//
-//            final String[] response_result = {null};
-//            Thread thread = new Thread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    String responseString =null;
-//                    try {
-//                        //同步请求，要放到子线程执行
-//                        Response response = call.execute();
-//                        assert response.body() != null;
-//                        String res_str = response.body().string();
-//                        System.out.println("okHttpGet run: response:"+res_str);
-//                        JSONObject jsonObj = new JSONObject(res_str);
-//                        JSONArray geocodes_array = (JSONArray) jsonObj.get("geocodes");
-//                        JSONObject res_geocode = geocodes_array.getJSONObject(0);
-//                        String location = (String) res_geocode.get("location");
-//
-//                        String[] location_x_y = location.split(",");
-//                        String x  = location_x_y[1];
-//                        String y  = location_x_y[0];
-////                        String x  = "34.224944";
-////                        String y  = "117.202596";
-//
-//                        System.out.println("此POI对应的经纬度 location"+location);
-//                        System.out.println("此POI对应的纬度"+x);
-//                        System.out.println("此POI对应的经度"+y);
-//                        double x_float = Double.parseDouble(x);
-//                        double y_float = Double.parseDouble(y);
-//                        points.add(new LatLng(x_float, y_float));
-//
-//                    } catch (IOException | JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            });
-//            thread.start();
-//        }
-////        for (int i = 0; i < coords.length; i += 2) {
-////            points.add(new LatLng(coords[i+1], coords[i]));
-////        }
-//        while(points.size()<all_poi.size()){
-////            System.out.println("等待http请求");
-//        }
-//
-//        return points;
-//    }
-
-
-
-    private double[] coords = {
-            117.202596,34.224944,
-            117.202836,34.213434,
-            117.203934,34.210573,
-            117.215414,34.212578,
-            117.214921,34.206988,
-            117.219641,34.211052,
-            117.222838,34.210754
-    };
-
-    private List<LatLng> showListLat1(){
-        List<LatLng> points = new ArrayList<LatLng>();
-        for (int i = 0; i < coords1.length; i += 2) {
-            points.add(new LatLng(coords1[i+1], coords1[i]));
-        }
-        return points;
-    }
-
-    private double[] coords1 = {
-            117.222838,34.210754,
-            117.225456,34.218526,
-            117.209835,34.215013,
-    };
 
 }
