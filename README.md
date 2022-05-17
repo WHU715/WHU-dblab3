@@ -4,4 +4,4 @@
 
 oddb-demo.apk为演示安卓安装包（注意需要授予应用访问网络权限）
 
-注意："/tmdb-main/app/src/main/java/drz/oddb/MapActivity.java"中的showListCovid19函数中需要自行更换高德开放平台key
+注意："/app/src/main/java/drz/oddb/MapActivity.java"中的showListCovid19函数中需要自行更换高德开放平台key
